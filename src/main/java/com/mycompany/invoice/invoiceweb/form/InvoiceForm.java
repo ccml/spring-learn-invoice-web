@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 public class InvoiceForm {
     private String number;
-    @NotBlank
+    @NotBlank()
     private String customerName;
     @Size(min=10,max=13)
     private String orderNumber;
