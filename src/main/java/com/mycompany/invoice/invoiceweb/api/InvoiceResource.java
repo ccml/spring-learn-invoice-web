@@ -33,7 +33,7 @@ public class InvoiceResource {
     }
 
     @GetMapping("")
-    public List<Invoice> list() {
+    public Iterable<Invoice> list() {
         System.out.println("La méthode list a été appelée");
         return invoiceService.list();
     }
