@@ -30,36 +30,36 @@ public class InvoiceControllerWeb {
     public void setInvoiceService(InvoiceServiceInterface invoiceService) {
         this.invoiceService = invoiceService;
     }
-
-    @PostMapping("")
-    public String createInvoice(@Valid @ModelAttribute InvoiceForm invoiceForm, BindingResult results) {
-        if(results.hasErrors()) {
-            return "invoice-create-form";
-        } else {
-            Invoice invoice = new Invoice();
-            invoice.setCustomerName(invoiceForm.getCustomerName());
-            invoice.setOrderNumber(invoiceForm.getOrderNumber());
-            invoiceService.createInvoice(invoice);
-            return "invoice-created";
+    /*
+        @PostMapping("")
+        public String createInvoice(@Valid @ModelAttribute InvoiceForm invoiceForm, BindingResult results) {
+            if(results.hasErrors()) {
+                return "invoice-create-form";
+            } else {
+                Invoice invoice = new Invoice();
+                invoice.setCustomerName(invoiceForm.getCustomerName());
+                invoice.setOrderNumber(invoiceForm.getOrderNumber());
+                invoiceService.createInvoice(invoice);
+                return "invoice-created";
+            }
         }
-    }
 
-    @GetMapping("/home")
-    public String displayHome(Model model) {
-        System.out.println("La méthode display home a été appelée");
-        List<Invoice> invoices = invoiceService.list();
-        model.addAttribute("invoices", invoices);
-        return "invoice-home";
-    }
+            @GetMapping("/home")
+            public String displayHome(Model model) {
+                System.out.println("La méthode display home a été appelée");
+                List<Invoice> invoices = invoiceService.list();
+                model.addAttribute("invoices", invoices);
+                return "invoice-home";
+            }
 
-    @GetMapping("/{id}")
-    public String displayInvoice(@PathVariable("id") String number, Model model) {
-        System.out.println("La méthode display home a été appelée");
-        Invoice invoice = invoiceService.getInvoiceByNumber(number);
-        model.addAttribute("invoice", invoice);
-        return "invoice-details";
-    }
-
+            @GetMapping("/{id}")
+            public String displayInvoice(@PathVariable("id") String number, Model model) {
+                System.out.println("La méthode display home a été appelée");
+                Invoice invoice = invoiceService.getInvoiceByNumber(number);
+                model.addAttribute("invoice", invoice);
+                return "invoice-details";
+            }
+        */
     @GetMapping("/create-form")
     public String displayInvoiceCreateForm(@ModelAttribute InvoiceForm invoiceForm) {
         return "invoice-create-form";
