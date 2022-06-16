@@ -27,27 +27,20 @@ public class InvoiceResource {
         this.invoiceService = invoiceService;
     }
 
-    @PostMapping("")
+    @PostMapping()
     public Invoice create(@RequestBody Invoice invoice) {
         return invoiceService.createInvoice(invoice);
     }
 
-    @GetMapping("/home")
+    @GetMapping("")
     public List<Invoice> list() {
-        System.out.println("La méthode display home a été appelée");
+        System.out.println("La méthode list a été appelée");
         return invoiceService.list();
     }
 
     @GetMapping("/{id}")
     public Invoice get(@PathVariable("id") String number) {
-        System.out.println("La méthode display home a été appelée");
+        System.out.println("La méthode get a été appelée");
         return invoiceService.getInvoiceByNumber(number);
     }
-/*
-    @GetMapping("/create-form")
-    public String displayInvoiceCreateForm(@ModelAttribute InvoiceForm invoiceForm) {
-        return "invoice-create-form";
-    }
-
-*/
 }
