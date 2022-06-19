@@ -1,5 +1,6 @@
 package com.mycompany.invoice.invoiceweb.controller;
 
+import com.mycompany.invoice.core.entity.Address;
 import com.mycompany.invoice.core.entity.Customer;
 import com.mycompany.invoice.core.entity.Invoice;
 import com.mycompany.invoice.core.service.InvoiceServiceInterface;
@@ -33,7 +34,14 @@ public class InvoiceControllerWeb {
             Invoice invoice = new Invoice();
             Customer customer = new Customer(invoiceForm.getCustomerName());
             invoice.setCustomer(customer);
-            invoice.setOrderNumber(invoiceForm.getOrderNumber());
+            // invoice.setOrderNumber(invoiceForm.getOrderNumber());
+            Address address = new Address();
+            address.setStreet(invoiceForm.getStreetName());
+            address.setStreetNumber(invoiceForm.getStreetNumber());
+            address.setZipCode(invoiceForm.getZipCode());
+            address.setCity(invoiceForm.getCity());
+            address.setCountry(invoiceForm.getCountry());
+            customer.setAddress(address);
             invoiceService.createInvoice(invoice);
             return "invoice-created";
         }
